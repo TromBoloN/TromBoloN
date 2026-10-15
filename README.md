@@ -3,7 +3,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=220&section=header&text=Arif%20Abdurrahman&fontSize=56&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc=TromBoloN%20%E2%80%A2%20Kalimantan%20Timur&descAlignY=58&descSize=18" width="100%" />
 
 <a href="https://github.com/TromBoloN">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=1200&color=00F7FF&center=true&vCenter=true&width=640&height=50&lines=Student+Developer;Building+Web+%26+WebGIS+Projects;Based+in+East+Kalimantan;Always+learning+something+new" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&pause=1200&color=00F7FF&center=true&vCenter=true&width=640&height=50&lines=Student+Developer;Django+Backend+Developer;Building+Web+%26+WebGIS+Projects;Based+in+East+Kalimantan;Always+learning+something+new" alt="Typing SVG" />
 </a>
 
 <br/>
@@ -24,14 +24,17 @@ $ whoami
 
 $ cat about.txt
 > Student developer from East Kalimantan, Indonesia
-> Into web development, maps (WebGIS) and Python
-> Currently leveling up: more projects, cleaner code
+> Into backend development, maps (WebGIS) and Python
+> Built the Django backend of a digital food ordering system
 
-$ ls ./interests
-> webgis/  python/  frontend/  open-source/
+$ ls ./skills
+> django/  python/  rest-api/  webgis/  frontend/
+
+$ echo $CURRENTLY_WORKING_ON
+> upgrading the recommendation chatbot 🤖
 
 $ echo $STATUS
-> building in public (slowly, but surely) 🚀
+> building in public 🚀
 ```
 
 ---
@@ -40,10 +43,33 @@ $ echo $STATUS
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=python,html,css,js,git,github,vscode,linux&theme=dark" />
+<img src="https://skillicons.dev/icons?i=python,django,sqlite,html,css,js,bootstrap,git,github,vscode&theme=dark" />
 
 </div>
 
+
+---
+
+## 🚀 Featured Project
+
+<div align="center">
+
+<a href="https://github.com/Cordova88/pemesanan-makanan-digital">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=Cordova88&repo=pemesanan-makanan-digital&theme=tokyonight&hide_border=true&bg_color=0d1117" />
+</a>
+
+</div>
+
+**🍽️ Pemesanan Makanan Digital** is a Django food ordering app with QR table ordering, a cashier panel and an Indonesian recommendation chatbot.
+
+| Module | What I built |
+| :-- | :-- |
+| 🧾 `orders` | Checkout, price snapshots, order status, payments, cancellations and refunds |
+| 📋 `menu` | Categories, items, variants, add-ons and tags |
+| 🤖 `recommendation` | Rule-based chatbot that extracts preferences and moods, then ranks menu items |
+| 👤 `users` | Staff login and admin management |
+
+🔧 **Next up:** upgrading the chatbot.
 
 ---
 
