@@ -44,7 +44,6 @@ $ echo $STATUS
 
 </div>
 
-> ✏️ Edit the list after `?i=` with your own tools. Icon names are listed at https://skillicons.dev
 
 ---
 
