@@ -24,11 +24,10 @@ $ whoami
 
 $ cat about.txt
 > Student developer from East Kalimantan, Indonesia
-> Into backend development, maps (WebGIS) and Python
-> Built the Django backend of a digital food ordering system
+> Trying web development
 
 $ ls ./skills
-> django/  python/  rest-api/  webgis/  frontend/
+> django/  python/  rest-api/  webgis/  frontend/ laravel/
 
 $ echo $CURRENTLY_WORKING_ON
 > upgrading the recommendation chatbot 🤖
@@ -43,7 +42,7 @@ $ echo $STATUS
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=python,django,sqlite,html,css,js,bootstrap,git,github,vscode&theme=dark" />
+<img src="https://skillicons.dev/icons?i=python,php,laravel,react,django,sqlite,html,css,js,bootstrap,git,github,vscode&theme=dark" />
 
 </div>
 
@@ -67,7 +66,7 @@ $ echo $STATUS
 | 🧾 `orders` | Checkout, price snapshots, order status, payments, cancellations and refunds |
 | 📋 `menu` | Categories, items, variants, add-ons and tags |
 | 🤖 `recommendation` | Rule-based chatbot that extracts preferences and moods, then ranks menu items |
-| 👤 `users` | Staff login and admin management |
+| 👤 `users` | Staff login and cashier/admin management |
 
 🔧 **Next up:** upgrading the chatbot.
 
@@ -107,23 +106,5 @@ $ echo $STATUS
 </div>
 
 ---
-
-## 📈 Activity Graph
-
-<div align="center">
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=TromBoloN&theme=tokyo-night&hide_border=true&bg_color=0d1117&area=true" width="100%" />
-
-</div>
-
----
-
-## 🏆 Trophies
-
-<div align="center">
-
-<img src="https://github-profile-trophy.vercel.app/?username=TromBoloN&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7" />
-
-</div>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=footer" width="100%" />
