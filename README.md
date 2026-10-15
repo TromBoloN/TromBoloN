@@ -24,10 +24,11 @@ $ whoami
 
 $ cat about.txt
 > Student developer from East Kalimantan, Indonesia
-> Trying web development
+> Into backend development, maps (WebGIS) and Python
+> Built the Django backend of a digital food ordering system
 
 $ ls ./skills
-> django/  python/  rest-api/  webgis/  frontend/ laravel/
+> django/  python/  rest-api/  webgis/  frontend/
 
 $ echo $CURRENTLY_WORKING_ON
 > upgrading the recommendation chatbot 🤖
@@ -42,10 +43,11 @@ $ echo $STATUS
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=python,php,laravel,react,django,sqlite,html,css,js,bootstrap,git,github,vscode&theme=dark" />
+<img src="https://skillicons.dev/icons?i=python,django,sqlite,html,css,js,react,php,laravel,bootstrap,git,github,vscode&theme=dark" />
 
 </div>
 
+> ✏️ Edit the list after `?i=` with your own tools. Icon names are listed at https://skillicons.dev
 
 ---
 
