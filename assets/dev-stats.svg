@@ -13,17 +13,17 @@
 <rect x="1" y="1" width="798" height="323" rx="14" fill="url(#bg)" stroke="url(#border)" stroke-width="2"/>
 <text x="30" y="44" class="m" font-size="18" font-weight="700" fill="#00F7FF">&gt;_ Arif Abdurrahman Siddiq <tspan fill="#8b949e" font-weight="400">/ dev stats</tspan></text>
 <circle cx="626" cy="39" r="4" fill="#3FB950" class="pulse"/>
-<text x="770" y="44" class="m" font-size="12" fill="#8b949e" text-anchor="end">updated 2026-10-26</text>
+<text x="770" y="44" class="m" font-size="12" fill="#8b949e" text-anchor="end">updated 2026-10-27</text>
 <g class="fade" style="animation-delay:0.00s">
 <rect x="30" y="68" width="240" height="68" rx="10" fill="#161b22" stroke="#30363d"/>
 <rect x="30" y="80" width="3" height="44" rx="1.5" fill="#00F7FF"/>
-<text x="50" y="108" class="t" font-size="28" font-weight="700" fill="#00F7FF" filter="url(#glow)">223</text>
+<text x="50" y="108" class="t" font-size="28" font-weight="700" fill="#00F7FF" filter="url(#glow)">227</text>
 <text x="50" y="126" class="t" font-size="12" fill="#8b949e">Total contributions</text>
 </g>
 <g class="fade" style="animation-delay:0.12s">
 <rect x="280" y="68" width="240" height="68" rx="10" fill="#161b22" stroke="#30363d"/>
 <rect x="280" y="80" width="3" height="44" rx="1.5" fill="#B26BFF"/>
-<text x="300" y="108" class="t" font-size="28" font-weight="700" fill="#B26BFF" filter="url(#glow)">197</text>
+<text x="300" y="108" class="t" font-size="28" font-weight="700" fill="#B26BFF" filter="url(#glow)">201</text>
 <text x="300" y="126" class="t" font-size="12" fill="#8b949e">Commits · last 12 months</text>
 </g>
 <g class="fade" style="animation-delay:0.24s">
@@ -35,7 +35,7 @@
 <g class="fade" style="animation-delay:0.36s">
 <rect x="30" y="146" width="240" height="68" rx="10" fill="#161b22" stroke="#30363d"/>
 <rect x="30" y="158" width="3" height="44" rx="1.5" fill="#00F7FF"/>
-<text x="50" y="186" class="t" font-size="28" font-weight="700" fill="#00F7FF" filter="url(#glow)">3 days</text>
+<text x="50" y="186" class="t" font-size="28" font-weight="700" fill="#00F7FF" filter="url(#glow)">4 days</text>
 <text x="50" y="204" class="t" font-size="12" fill="#8b949e">Current streak</text>
 </g>
 <g class="fade" style="animation-delay:0.48s">
@@ -53,24 +53,24 @@
 <text x="30" y="248" class="m" font-size="11" fill="#8b949e" letter-spacing="1">TOP LANGUAGES · WEIGHTED BY COMMITS, LAST 12 MONTHS</text>
 <g clip-path="url(#barclip)">
 <rect x="30" y="258" width="740" height="10" fill="#21262d"/>
-<rect x="30.00" y="258" width="325.16" height="10" fill="#3572A5"/>
-<rect x="354.66" y="258" width="218.57" height="10" fill="#3178c6"/>
-<rect x="572.73" y="258" width="99.01" height="10" fill="#f34b7d"/>
-<rect x="671.25" y="258" width="27.98" height="10" fill="#f1e05a"/>
-<rect x="698.73" y="258" width="24.97" height="10" fill="#e34c26"/>
-<rect x="723.20" y="258" width="47.30" height="10" fill="#6e7681"/>
+<rect x="30.00" y="258" width="326.37" height="10" fill="#3572A5"/>
+<rect x="355.87" y="258" width="214.23" height="10" fill="#3178c6"/>
+<rect x="569.60" y="258" width="97.05" height="10" fill="#f34b7d"/>
+<rect x="666.16" y="258" width="30.73" height="10" fill="#e34c26"/>
+<rect x="696.38" y="258" width="28.06" height="10" fill="#f1e05a"/>
+<rect x="723.94" y="258" width="46.56" height="10" fill="#6e7681"/>
 <rect class="shine" x="0" y="258" width="120" height="10" fill="url(#shine)"/>
 </g>
 <circle cx="35.0" cy="296" r="5" fill="#3572A5"/>
-<text x="46.0" y="300" class="t" font-size="12" fill="#c9d1d9">Python <tspan fill="#8b949e">43.9%</tspan></text>
+<text x="46.0" y="300" class="t" font-size="12" fill="#c9d1d9">Python <tspan fill="#8b949e">44.0%</tspan></text>
 <circle cx="158.3" cy="296" r="5" fill="#3178c6"/>
-<text x="169.3" y="300" class="t" font-size="12" fill="#c9d1d9">TypeScript <tspan fill="#8b949e">29.5%</tspan></text>
+<text x="169.3" y="300" class="t" font-size="12" fill="#c9d1d9">TypeScript <tspan fill="#8b949e">28.9%</tspan></text>
 <circle cx="281.7" cy="296" r="5" fill="#f34b7d"/>
-<text x="292.7" y="300" class="t" font-size="12" fill="#c9d1d9">C++ <tspan fill="#8b949e">13.3%</tspan></text>
-<circle cx="405.0" cy="296" r="5" fill="#f1e05a"/>
-<text x="416.0" y="300" class="t" font-size="12" fill="#c9d1d9">JavaScript <tspan fill="#8b949e">3.7%</tspan></text>
-<circle cx="528.3" cy="296" r="5" fill="#e34c26"/>
-<text x="539.3" y="300" class="t" font-size="12" fill="#c9d1d9">HTML <tspan fill="#8b949e">3.3%</tspan></text>
+<text x="292.7" y="300" class="t" font-size="12" fill="#c9d1d9">C++ <tspan fill="#8b949e">13.0%</tspan></text>
+<circle cx="405.0" cy="296" r="5" fill="#e34c26"/>
+<text x="416.0" y="300" class="t" font-size="12" fill="#c9d1d9">HTML <tspan fill="#8b949e">4.1%</tspan></text>
+<circle cx="528.3" cy="296" r="5" fill="#f1e05a"/>
+<text x="539.3" y="300" class="t" font-size="12" fill="#c9d1d9">JavaScript <tspan fill="#8b949e">3.7%</tspan></text>
 <circle cx="651.7" cy="296" r="5" fill="#6e7681"/>
-<text x="662.7" y="300" class="t" font-size="12" fill="#c9d1d9">Other <tspan fill="#8b949e">6.3%</tspan></text>
+<text x="662.7" y="300" class="t" font-size="12" fill="#c9d1d9">Other <tspan fill="#8b949e">6.2%</tspan></text>
 </svg>
