@@ -24,15 +24,14 @@ $ whoami
 
 $ cat about.txt
 > Student developer from East Kalimantan, Indonesia
-> Into backend development, maps (WebGIS) and Python
-> Designed the database and Django backend of a digital food ordering system
-> Now building full-stack with Next.js + Supabase
+> Into backend development and trying to get into system architecture
+> usually make web
 
 $ ls ./skills
 > django/  python/  rest-api/  webgis/  nextjs/  supabase/  frontend/
 
 $ echo $CURRENTLY_WORKING_ON
-> MIT-WEEK 2026 competition portal 🏆
+> MIT-WEEK 2026 competition portal 
 
 $ echo $STATUS
 > building in public 🚀
