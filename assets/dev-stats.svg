@@ -17,13 +17,13 @@
 <g class="fade" style="animation-delay:0.00s">
 <rect x="30" y="68" width="240" height="68" rx="10" fill="#161b22" stroke="#30363d"/>
 <rect x="30" y="80" width="3" height="44" rx="1.5" fill="#00F7FF"/>
-<text x="50" y="108" class="t" font-size="28" font-weight="700" fill="#00F7FF" filter="url(#glow)">244</text>
+<text x="50" y="108" class="t" font-size="28" font-weight="700" fill="#00F7FF" filter="url(#glow)">248</text>
 <text x="50" y="126" class="t" font-size="12" fill="#8b949e">Total contributions</text>
 </g>
 <g class="fade" style="animation-delay:0.12s">
 <rect x="280" y="68" width="240" height="68" rx="10" fill="#161b22" stroke="#30363d"/>
 <rect x="280" y="80" width="3" height="44" rx="1.5" fill="#B26BFF"/>
-<text x="300" y="108" class="t" font-size="28" font-weight="700" fill="#B26BFF" filter="url(#glow)">217</text>
+<text x="300" y="108" class="t" font-size="28" font-weight="700" fill="#B26BFF" filter="url(#glow)">221</text>
 <text x="300" y="126" class="t" font-size="12" fill="#8b949e">Commits · last 12 months</text>
 </g>
 <g class="fade" style="animation-delay:0.24s">
@@ -53,24 +53,24 @@
 <text x="30" y="248" class="m" font-size="11" fill="#8b949e" letter-spacing="1">TOP LANGUAGES · WEIGHTED BY COMMITS, LAST 12 MONTHS</text>
 <g clip-path="url(#barclip)">
 <rect x="30" y="258" width="740" height="10" fill="#21262d"/>
-<rect x="30.00" y="258" width="283.62" height="10" fill="#3572A5"/>
-<rect x="313.12" y="258" width="204.42" height="10" fill="#3178c6"/>
-<rect x="517.03" y="258" width="89.93" height="10" fill="#f34b7d"/>
-<rect x="606.47" y="258" width="66.99" height="10" fill="#e34c26"/>
-<rect x="672.96" y="258" width="41.47" height="10" fill="#f1e05a"/>
-<rect x="713.93" y="258" width="56.57" height="10" fill="#6e7681"/>
+<rect x="30.00" y="258" width="278.49" height="10" fill="#3572A5"/>
+<rect x="307.99" y="258" width="213.42" height="10" fill="#3178c6"/>
+<rect x="520.91" y="258" width="88.32" height="10" fill="#f34b7d"/>
+<rect x="608.73" y="258" width="65.79" height="10" fill="#e34c26"/>
+<rect x="674.01" y="258" width="40.69" height="10" fill="#f1e05a"/>
+<rect x="714.20" y="258" width="56.30" height="10" fill="#6e7681"/>
 <rect class="shine" x="0" y="258" width="120" height="10" fill="url(#shine)"/>
 </g>
 <circle cx="35.0" cy="296" r="5" fill="#3572A5"/>
-<text x="46.0" y="300" class="t" font-size="12" fill="#c9d1d9">Python <tspan fill="#8b949e">38.3%</tspan></text>
+<text x="46.0" y="300" class="t" font-size="12" fill="#c9d1d9">Python <tspan fill="#8b949e">37.6%</tspan></text>
 <circle cx="158.3" cy="296" r="5" fill="#3178c6"/>
-<text x="169.3" y="300" class="t" font-size="12" fill="#c9d1d9">TypeScript <tspan fill="#8b949e">27.6%</tspan></text>
+<text x="169.3" y="300" class="t" font-size="12" fill="#c9d1d9">TypeScript <tspan fill="#8b949e">28.8%</tspan></text>
 <circle cx="281.7" cy="296" r="5" fill="#f34b7d"/>
-<text x="292.7" y="300" class="t" font-size="12" fill="#c9d1d9">C++ <tspan fill="#8b949e">12.1%</tspan></text>
+<text x="292.7" y="300" class="t" font-size="12" fill="#c9d1d9">C++ <tspan fill="#8b949e">11.9%</tspan></text>
 <circle cx="405.0" cy="296" r="5" fill="#e34c26"/>
-<text x="416.0" y="300" class="t" font-size="12" fill="#c9d1d9">HTML <tspan fill="#8b949e">9.0%</tspan></text>
+<text x="416.0" y="300" class="t" font-size="12" fill="#c9d1d9">HTML <tspan fill="#8b949e">8.8%</tspan></text>
 <circle cx="528.3" cy="296" r="5" fill="#f1e05a"/>
-<text x="539.3" y="300" class="t" font-size="12" fill="#c9d1d9">JavaScript <tspan fill="#8b949e">5.5%</tspan></text>
+<text x="539.3" y="300" class="t" font-size="12" fill="#c9d1d9">JavaScript <tspan fill="#8b949e">5.4%</tspan></text>
 <circle cx="651.7" cy="296" r="5" fill="#6e7681"/>
-<text x="662.7" y="300" class="t" font-size="12" fill="#c9d1d9">Other <tspan fill="#8b949e">7.6%</tspan></text>
+<text x="662.7" y="300" class="t" font-size="12" fill="#c9d1d9">Other <tspan fill="#8b949e">7.5%</tspan></text>
 </svg>
