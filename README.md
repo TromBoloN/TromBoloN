@@ -56,55 +56,44 @@ $ echo $STATUS
 
 <table>
   <tr>
-    <td width="50%" valign="top">
+    <td colspan="2" valign="top">
       <h3>🏆 <a href="https://github.com/TromBoloN/web-submissions">MIT-WEEK 2026 Portal</a></h3>
       <p><b>Web Development Competition Platform</b></p>
-      <p>Official portal for the Web Development Competition at MIT-WEEK 2026 (Informatics Association, Universitas Mulawarman). Contestants submit their work, judges score it blind against a weighted rubric, and the committee runs everything from one admin panel. Row Level Security and database triggers lock scores once results are released.</p>
+      <p>Official portal for the Web Development Competition at MIT-WEEK 2026. Teams submit their projects, judges score them blind against a weighted rubric, and the committee manages everything from one admin panel. Scores are locked at the database level once results are released.</p>
       <p>
         <img src="https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=nextdotjs&logoColor=white" />
         <img src="https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB" />
         <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
         <img src="https://img.shields.io/badge/Tailwind_v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
         <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white" />
+        <img src="https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white" />
       </p>
       <p>🔗 <a href="https://github.com/TromBoloN/web-submissions"><b>Repository ➔</b></a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>🍽️ <a href="https://github.com/Cordova88/pemesanan-makanan-digital">Pemesanan Makanan Digital</a></h3>
-      <p><b>Digital Food Ordering System</b></p>
-      <p>Customers order by scanning a QR code at their table, and the cashier panel handles payments, cancellations and refunds. A rule-based Indonesian chatbot picks up preferences and moods, then ranks menu items. I designed the whole database and wrote the Django backend.</p>
-      <p>
-        <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white" />
-        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
-        <img src="https://img.shields.io/badge/REST_API-02569B?style=flat-square" />
-        <img src="https://img.shields.io/badge/Chatbot-8A2BE2?style=flat-square" />
-      </p>
-      <p>🔗 <a href="https://github.com/Cordova88/pemesanan-makanan-digital"><b>Repository ➔</b></a></p>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
+      <h3>🍽️ <a href="https://github.com/Cordova88/pemesanan-makanan-digital">Pemesanan Makanan Digital</a></h3>
+      <p><b>Digital Food Ordering System</b></p>
+      <p>Order by scanning a QR code at the table, with a cashier panel and a rule-based Indonesian recommendation chatbot. I designed the database and wrote the whole Django backend.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white" />
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
+        <img src="https://img.shields.io/badge/REST_API-02569B?style=flat-square" />
+      </p>
+      <p>🔗 <a href="https://github.com/Cordova88/pemesanan-makanan-digital"><b>Repository ➔</b></a></p>
+    </td>
+    <td width="50%" valign="top">
       <h3>🗺️ <a href="https://github.com/hissyam90/webgis-kaltim">WebGIS Kaltim</a></h3>
       <p><b>Power Plant Map of Kalimantan</b></p>
-      <p>Team project (Kelompok Green Hosa, Universitas Mulawarman) that maps power plants across Kalimantan. Leaflet markers by plant type, a basemap switcher, a choropleth of East Kalimantan regencies by renewable share, plus search, filters and CSV export.</p>
+      <p>Team project (Kelompok Green Hosa, Universitas Mulawarman) with a Leaflet map, a regional renewable-share choropleth, search, filters and CSV export.</p>
       <p>
         <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" />
-        <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" />
         <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />
         <img src="https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white" />
         <img src="https://img.shields.io/badge/Leaflet-199900?style=flat-square&logo=leaflet&logoColor=white" />
       </p>
       <p>🔗 <a href="https://github.com/hissyam90/webgis-kaltim"><b>Repository ➔</b></a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>🧾 Backend Modules</h3>
-      <p><b>What I built in the food ordering system</b></p>
-      <p>
-        <code>orders</code>: checkout, price snapshots, order status, payments, cancellations and refunds<br/><br/>
-        <code>menu</code>: categories, items, variants, add-ons and tags<br/><br/>
-        <code>recommendation</code>: chatbot that extracts preferences and moods, then ranks menu items<br/><br/>
-        <code>users</code>: staff login and cashier/admin management
-      </p>
     </td>
   </tr>
 </table>
