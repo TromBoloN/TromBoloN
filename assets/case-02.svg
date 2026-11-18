@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="295" viewBox="0 0 420 295" role="img" aria-label="Case file CR-64-002: Pemesanan Makanan Digital. Orders placed by scanning a QR code at the table. A cashier panel. A rule-based recommendation chatbot that speaks Indonesian."><title>Case file CR-64-002: Pemesanan Makanan Digital. Orders placed by scanning a QR code at the table. A cashier panel. A rule-based recommendation chatbot that speaks Indonesian.</title><style>
+.se{font-family:Georgia,'Times New Roman',Times,serif}
+.mo{font-family:Consolas,'Liberation Mono','Courier New',monospace;text-transform:uppercase;letter-spacing:.02em}
+.ty{font-family:'Courier New',Courier,'Liberation Mono',monospace}
+.st{font-family:Impact,Haettenschweiler,'Arial Narrow Bold','Franklin Gothic Bold','Arial Black',sans-serif;text-transform:uppercase;letter-spacing:.04em}
+.cr{shape-rendering:crispEdges}
+.thud{animation:thud .32s cubic-bezier(.2,.9,.3,1) 1.1s both;transform-box:fill-box;transform-origin:center}
+@keyframes thud{0%{opacity:0;transform:scale(1.9)}75%{opacity:.92;transform:scale(.97)}100%{opacity:.88;transform:scale(1)}}
+.lamp{animation:lamp 2.8s steps(1) infinite}
+@keyframes lamp{0%,100%{opacity:1}46%{opacity:.12}50%{opacity:1}55%{opacity:.12}58%{opacity:1}}
+.win{animation:win 7.3s steps(1) infinite}
+@keyframes win{0%,100%{opacity:.75}61%{opacity:.1}64%{opacity:.75}83%{opacity:.1}84%{opacity:.75}}
+.smoke{animation:smoke 10s steps(10) infinite}
+@keyframes smoke{0%{transform:translate(0,0);opacity:0}10%{opacity:.5}100%{transform:translate(34px,-64px);opacity:0}}
+.rise{animation:rise .5s steps(4) backwards}
+@keyframes rise{from{opacity:0}to{opacity:1}}
+</style><defs>
+<filter id="grain" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7" stitchTiles="stitch"/>
+  <feColorMatrix values="0 0 0 0 .85  0 0 0 0 .8  0 0 0 0 .72  0 0 0 .17 -.05"/>
+</filter>
+<filter id="rough" x="-8%" y="-8%" width="116%" height="116%">
+  <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="3" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G" result="d"/>
+  <feColorMatrix in="n" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3 2.55" result="wear"/>
+  <feComposite in="d" in2="wear" operator="in"/>
+</filter>
+<pattern id="haz" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+  <rect width="7" height="14" fill="#7d6230"/><rect x="7" width="7" height="14" fill="#070504"/>
+</pattern>
+<pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+  <rect width="6" height="6" fill="#221c18"/><rect width="1" height="6" fill="#4a3f37"/>
+</pattern>
+</defs>
+<rect width="420" height="295" fill="#16120f"/>
+<rect width="420" height="295" filter="url(#grain)"/>
+<rect class="cr" x=".5" y=".5" width="419" height="294" fill="none" stroke="#4a3f37"/>
+<rect class="cr" x="5.5" y="5.5" width="409" height="284" fill="none" stroke="#221c18"/>
+<path class="cr" d="M3 17V3H17" fill="none" stroke="#d9cfbd" stroke-width="2"/>
+<path class="cr" d="M417 17V3H403" fill="none" stroke="#d9cfbd" stroke-width="2"/>
+<path class="cr" d="M3 278V292H17" fill="none" stroke="#d9cfbd" stroke-width="2"/>
+<path class="cr" d="M417 278V292H403" fill="none" stroke="#d9cfbd" stroke-width="2"/>
+<text x="24" y="32" class="mo" font-size="10" fill="#8c8273" text-anchor="start" >CASE FILE № CR-64-002</text>
+<text x="396" y="32" class="mo" font-size="9" fill="#5e554b" text-anchor="end" >SECTOR 64 · FORM CR-64/7</text>
+<path class="cr" d="M20 40.5H400" stroke="#4a3f37"/>
+<text x="22" y="74" class="se" font-size="20" fill="#d9cfbd">Pemesanan Makanan Digital</text>
+<text x="24" y="94" class="mo" font-size="10" fill="#9c7b4a" text-anchor="start" >DIGITAL FOOD ORDERING SYSTEM</text>
+<text x="24" y="120" class="ty" font-size="12.5" fill="#d9cfbd" opacity=".9">Orders placed by scanning a QR code at the table.</text>
+<text x="24" y="137" class="ty" font-size="12.5" fill="#d9cfbd" opacity=".9">A cashier panel. A rule-based recommendation</text>
+<text x="24" y="154" class="ty" font-size="12.5" fill="#d9cfbd" opacity=".9">chatbot that speaks Indonesian.</text>
+<text x="24" y="179" class="mo" font-size="9" fill="#8c8273" text-anchor="start" >ROLE OF SUBJECT</text>
+<text x="24" y="194" class="mo" font-size="11" fill="#d9cfbd" text-anchor="start" >DATABASE DESIGN · ENTIRE DJANGO BACKEND</text>
+<text x="24" y="217" class="mo" font-size="9" fill="#8c8273" text-anchor="start" >EQUIPMENT</text>
+<text x="24" y="232" class="mo" font-size="11" fill="#d9cfbd" text-anchor="start" >DJANGO · PYTHON · REST API</text>
+<path class="cr" d="M20 256.5H400" stroke="#4a3f37"/>
+<text x="24" y="273" class="mo" font-size="10.5" fill="#9c7b4a" text-anchor="start" font-weight="700">OPEN FILE ▸</text>
+<g class="cr" fill="#8c8273" opacity=".8"><rect x="286" y="262" width="3" height="13"/><rect x="290" y="262" width="3" height="13"/><rect x="296" y="262" width="1" height="13"/><rect x="300" y="262" width="1" height="13"/><rect x="302" y="262" width="1" height="13"/><rect x="306" y="262" width="1" height="13"/><rect x="308" y="262" width="1" height="13"/><rect x="312" y="262" width="1" height="13"/><rect x="315" y="262" width="3" height="13"/><rect x="319" y="262" width="3" height="13"/><rect x="323" y="262" width="2" height="13"/><rect x="328" y="262" width="1" height="13"/><rect x="330" y="262" width="2" height="13"/><rect x="335" y="262" width="3" height="13"/><rect x="339" y="262" width="1" height="13"/><rect x="343" y="262" width="2" height="13"/><rect x="347" y="262" width="1" height="13"/><rect x="351" y="262" width="1" height="13"/><rect x="354" y="262" width="1" height="13"/><rect x="356" y="262" width="2" height="13"/><rect x="359" y="262" width="1" height="13"/><rect x="361" y="262" width="1" height="13"/><rect x="365" y="262" width="1" height="13"/><rect x="369" y="262" width="2" height="13"/><rect x="372" y="262" width="1" height="13"/><rect x="374" y="262" width="1" height="13"/><rect x="376" y="262" width="1" height="13"/><rect x="378" y="262" width="2" height="13"/><rect x="381" y="262" width="3" height="13"/><rect x="385" y="262" width="1" height="13"/><rect x="388" y="262" width="1" height="13"/><rect x="390" y="262" width="1" height="13"/></g>
+<g transform="translate(358 64) rotate(-7)" filter="url(#rough)"><g class="thud"><rect x="-36.1" y="-14.5" width="72.2" height="29.0" fill="none" stroke="#8c8273" stroke-width="2.5"/><rect x="-32.1" y="-10.5" width="64.2" height="21.0" fill="none" stroke="#8c8273" stroke-width="1"/><text x="0" y="6.1" class="st" font-size="17" fill="#8c8273" text-anchor="middle">FILED</text></g></g>
+</svg>
