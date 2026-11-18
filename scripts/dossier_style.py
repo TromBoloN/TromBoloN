@@ -1,94 +1,89 @@
 """Shared visual language for every SVG on the profile.
 
-The look: an archived personnel record from an industrial, bureaucratic city.
-Rules this module enforces on purpose:
-  * no gradients, no blur, no glow, no rounded corners
-  * 1px solid strokes, sharp corners, hard geometry
-  * stencil/stamp lettering only for stamps and section numerals;
-    everything technical is uppercase monospace with tight tracking
+Industrial machine-panel look: heavy bevelled copper plates with cut corners
+and screws, oxblood panels, a dark desk of scattered papers behind it all,
+and a condensed display face (Anton, OFL, embedded) with hard outlines.
+Text is kept to a minimum: big titles, big numbers, little else.
+
+Rules: no gradients, no blur, no glow. Bevels are flat stepped layers.
 Only the Python standard library is used.
 """
 from __future__ import annotations
 
+import base64
+import math
+import os
 import random
 from html import escape
 
-# --------------------------------------------------------------------------
-# Identity (rename the institution here and every asset follows)
-# --------------------------------------------------------------------------
-INSTITUTION = "DIRECTORATE OF CIVIC RECORDS"
-SECTOR = "SECTOR 64"
-FORM = "FORM CR-64/7"
 SUBJECT_ID = "64-TRB-0217"
 
 # --------------------------------------------------------------------------
 # Palette
 # --------------------------------------------------------------------------
-INK = "#16120f"      # card background, charcoal-brown
-SOOT = "#221c18"     # panels
-LINE = "#4a3f37"     # etched rules
-DIM = "#5e554b"      # secondary rules / empty marks
-FADED = "#8c8273"    # labels
-PAPER = "#d9cfbd"    # primary text
-BRASS = "#9c7b4a"    # alias, links, lit windows
-OCHRE = "#7d6230"    # caution tape
-RUST = "#7a2e24"     # stamps, warnings
-BLOOD = "#a3382c"    # accent
-VOID = "#070504"     # redaction bars, front skyline
+BG = "#0c0806"
+DESK = "#18110d"
+DESK_LINE = "#231a14"
+COPPER = "#94602f"
+COPPER_HI = "#d39a5c"
+COPPER_LO = "#5a3519"
+COPPER_DK = "#21140b"
+OXBLOOD = "#1d0b08"
+OXBLOOD_2 = "#2e0f0b"
+RED = "#b3261e"
+RED_DIM = "#5e1812"
+RED_HI = "#e0472f"
+AMBER = "#f2b630"
+CREAM = "#ecdfc6"
+MUTED = "#9b8a74"
+OUTLINE = "#120804"
 
-SERIF = "Georgia,'Times New Roman',Times,serif"
-MONO = "Consolas,'Liberation Mono','Courier New',monospace"
-TYPE = "'Courier New',Courier,'Liberation Mono',monospace"
-STENCIL = "Impact,Haettenschweiler,'Arial Narrow Bold','Franklin Gothic Bold','Arial Black',sans-serif"
+DISPLAY = "Anton,Impact,'Arial Narrow Bold','Arial Narrow',sans-serif"
+SANS = "'Segoe UI',Inter,'Helvetica Neue',Helvetica,Arial,sans-serif"
 
-CSS = f"""
-.se{{font-family:{SERIF}}}
-.mo{{font-family:{MONO};text-transform:uppercase;letter-spacing:.02em}}
-.ty{{font-family:{TYPE}}}
-.st{{font-family:{STENCIL};text-transform:uppercase;letter-spacing:.04em}}
+_FONT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts", "anton-subset.woff")
+
+
+def _font_face() -> str:
+    try:
+        with open(_FONT_PATH, "rb") as handle:
+            data = base64.b64encode(handle.read()).decode()
+    except OSError:
+        return ""  # falls back to Impact & co.
+    return f"@font-face{{font-family:'Anton';src:url(data:font/woff;base64,{data}) format('woff')}}"
+
+
+CSS = f"""{_font_face()}
+.d{{font-family:{DISPLAY};text-transform:uppercase}}
+.s{{font-family:{SANS}}}
 .cr{{shape-rendering:crispEdges}}
-.thud{{animation:thud .32s cubic-bezier(.2,.9,.3,1) 1.1s both;transform-box:fill-box;transform-origin:center}}
-@keyframes thud{{0%{{opacity:0;transform:scale(1.9)}}75%{{opacity:.92;transform:scale(.97)}}100%{{opacity:.88;transform:scale(1)}}}}
-.lamp{{animation:lamp 2.8s steps(1) infinite}}
-@keyframes lamp{{0%,100%{{opacity:1}}46%{{opacity:.12}}50%{{opacity:1}}55%{{opacity:.12}}58%{{opacity:1}}}}
-.win{{animation:win 7.3s steps(1) infinite}}
-@keyframes win{{0%,100%{{opacity:.75}}61%{{opacity:.1}}64%{{opacity:.75}}83%{{opacity:.1}}84%{{opacity:.75}}}}
-.smoke{{animation:smoke 10s steps(10) infinite}}
-@keyframes smoke{{0%{{transform:translate(0,0);opacity:0}}10%{{opacity:.5}}100%{{transform:translate(34px,-64px);opacity:0}}}}
-.rise{{animation:rise .5s steps(4) backwards}}
-@keyframes rise{{from{{opacity:0}}to{{opacity:1}}}}
+.lamp{{animation:lamp 2.6s steps(1) infinite}}
+@keyframes lamp{{0%,100%{{opacity:1}}44%{{opacity:.15}}50%{{opacity:1}}56%{{opacity:.15}}62%{{opacity:1}}}}
+.blink{{animation:blink 5s steps(1) infinite}}
+@keyframes blink{{0%,100%{{transform:scaleY(1)}}96%{{transform:scaleY(.1)}}}}
+.in{{animation:in .6s steps(5) backwards}}
+@keyframes in{{from{{opacity:0}}to{{opacity:1}}}}
+.sweep{{animation:sweep 6s steps(30) infinite}}
+@keyframes sweep{{from{{transform:translateY(0)}}to{{transform:translateY(var(--h))}}}}
 """
 
 DEFS = f"""
-<filter id="grain" x="0" y="0" width="100%" height="100%">
-  <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7" stitchTiles="stitch"/>
-  <feColorMatrix values="0 0 0 0 .85  0 0 0 0 .8  0 0 0 0 .72  0 0 0 .17 -.05"/>
+<filter id="grime" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" seed="4" stitchTiles="stitch"/>
+  <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .7 -.22"/>
 </filter>
-<filter id="rough" x="-8%" y="-8%" width="116%" height="116%">
-  <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="2" seed="3" result="n"/>
-  <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G" result="d"/>
-  <feColorMatrix in="n" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3 2.55" result="wear"/>
-  <feComposite in="d" in2="wear" operator="in"/>
+<filter id="wear" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency=".05 .9" numOctaves="2" seed="9" stitchTiles="stitch"/>
+  <feColorMatrix values="0 0 0 0 .9  0 0 0 0 .75  0 0 0 0 .55  0 0 0 .5 -.3"/>
 </filter>
-<pattern id="haz" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-  <rect width="7" height="14" fill="{OCHRE}"/><rect x="7" width="7" height="14" fill="{VOID}"/>
-</pattern>
-<pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-  <rect width="6" height="6" fill="{SOOT}"/><rect width="1" height="6" fill="{LINE}"/>
+<pattern id="dots" width="4" height="4" patternUnits="userSpaceOnUse">
+  <rect x="0" y="0" width="1.4" height="1.4" fill="#000" opacity=".45"/>
 </pattern>
 """
 
 
-# --------------------------------------------------------------------------
-# Small helpers
-# --------------------------------------------------------------------------
 def e(text) -> str:
     return escape(str(text))
-
-
-def text_width(text: str, size: float, factor: float = 0.6) -> float:
-    """Rough width of monospace/stencil text, for layout only."""
-    return len(text) * size * factor
 
 
 def doc(width: int, height: int, title: str, body: str) -> str:
@@ -100,239 +95,145 @@ def doc(width: int, height: int, title: str, body: str) -> str:
     )
 
 
-def frame(width: int, height: int) -> str:
-    """Card background: flat ink, flat grain, double etched rule, corner brackets."""
-    w, h = width, height
-    out = [
-        f'<rect width="{w}" height="{h}" fill="{INK}"/>',
-        f'<rect width="{w}" height="{h}" filter="url(#grain)"/>',
-        f'<rect class="cr" x=".5" y=".5" width="{w - 1}" height="{h - 1}" fill="none" stroke="{LINE}"/>',
-        f'<rect class="cr" x="5.5" y="5.5" width="{w - 11}" height="{h - 11}" fill="none" stroke="{SOOT}"/>',
-    ]
-    k = 14
-    for cx, cy, dx, dy in ((3, 3, 1, 1), (w - 3, 3, -1, 1), (3, h - 3, 1, -1), (w - 3, h - 3, -1, -1)):
-        out.append(
-            f'<path class="cr" d="M{cx} {cy + dy * k}V{cy}H{cx + dx * k}" '
-            f'fill="none" stroke="{PAPER}" stroke-width="2"/>'
-        )
-    return "\n".join(out)
+def display_width(text: str, size: float) -> float:
+    return len(text) * size * 0.47
 
 
-def label(x, y, text, size=10, fill=FADED, anchor="start", extra="") -> str:
+# --------------------------------------------------------------------------
+# Text
+# --------------------------------------------------------------------------
+def display(x, y, text, size, fill=CREAM, anchor="start", spacing=0.5, extra="") -> str:
+    """Condensed display text with a hard outline and a hard drop shadow."""
+    common = (
+        f'x="{x}" y="{y}" class="d" font-size="{size}" text-anchor="{anchor}" '
+        f'letter-spacing="{spacing}" {extra}'
+    )
+    stroke = max(size * 0.1, 2)
     return (
-        f'<text x="{x}" y="{y}" class="mo" font-size="{size}" fill="{fill}" '
+        f'<text {common} transform="translate(2 3)" fill="#000" opacity=".6" '
+        f'stroke="#000" stroke-width="{stroke:.1f}">{e(text)}</text>'
+        f'<text {common} fill="{fill}" stroke="{OUTLINE}" stroke-width="{stroke:.1f}" '
+        f'stroke-linejoin="miter" paint-order="stroke">{e(text)}</text>'
+    )
+
+
+def small(x, y, text, size=12, fill=MUTED, anchor="start", extra="") -> str:
+    return (
+        f'<text x="{x}" y="{y}" class="s" font-size="{size}" fill="{fill}" '
         f'text-anchor="{anchor}" {extra}>{e(text)}</text>'
     )
 
 
-def header_rule(x: float, y: float, width: float, numeral: str, title: str, code: str) -> str:
-    """`§ IV  ACTIVITY LEDGER ──────────── REF/CR-64-04`"""
-    num = f"§ {numeral}"
-    num_w = text_width(num, 20, 0.5)
-    title_x = x + num_w + 12
-    title_w = text_width(title, 12)
-    code_w = text_width(code, 10)
-    line_from = title_x + title_w + 12
-    line_to = x + width - code_w - 12
-    return "\n".join(
-        [
-            f'<text x="{x}" y="{y}" class="st" font-size="20" fill="{BLOOD}" filter="url(#rough)">{e(num)}</text>',
-            f'<text x="{title_x:.1f}" y="{y - 2}" class="mo" font-size="12" font-weight="700" fill="{PAPER}">{e(title)}</text>',
-            f'<path class="cr" d="M{line_from:.1f} {y - 6.5}H{line_to:.1f}" stroke="{LINE}"/>',
-            label(x + width, y - 2, code, 10, FADED, "end"),
-            f'<path class="cr" d="M{x} {y + 8.5}H{x + width}" stroke="{LINE}"/>',
-        ]
-    )
-
-
-def redact(x, y, width, height=11) -> str:
-    return f'<rect class="cr" x="{x}" y="{y}" width="{width}" height="{height}" fill="{VOID}"/>'
-
-
-def hazard(x, y, width, height) -> str:
+def tag(x, y, text, size=13, fill=RED, color=CREAM) -> str:
+    """Slanted red label tag."""
+    w = display_width(text, size) + 22
+    h = size + 10
+    k = h * 0.35
     return (
-        f'<rect class="cr" x="{x}" y="{y}" width="{width}" height="{height}" fill="url(#haz)"/>'
-        f'<path class="cr" d="M{x} {y + .5}H{x + width}M{x} {y + height - .5}H{x + width}" stroke="{VOID}"/>'
+        f'<polygon points="{x + k:.1f},{y} {x + w + k:.1f},{y} {x + w:.1f},{y + h} {x},{y + h}" '
+        f'fill="{fill}" stroke="{OUTLINE}" stroke-width="1.5"/>'
+        + f'<text x="{x + w / 2 + k / 2:.1f}" y="{y + h - 6:.1f}" class="d" font-size="{size}" '
+        f'fill="{color}" text-anchor="middle" letter-spacing=".6">{e(text)}</text>'
     )
 
 
-def barcode(seed: str, x: float, y: float, width: float, height: float, fill=PAPER) -> str:
-    rng = random.Random(seed)
-    out, cursor = [], x
-    while cursor < x + width - 3:
-        bar = rng.choice((1, 1, 1, 2, 2, 3))
-        if cursor + bar > x + width:
-            break
-        out.append(f'<rect x="{cursor:.0f}" y="{y}" width="{bar}" height="{height}"/>')
-        cursor += bar + rng.choice((1, 1, 2, 3))
-    return f'<g class="cr" fill="{fill}" opacity=".8">{"".join(out)}</g>'
-
-
-def stamp(text: str, x: float, y: float, rotate: float = -8, size: float = 24,
-          color: str = BLOOD, sub: str | None = None, animate: bool = True) -> str:
-    """Double-bordered, roughened ink stamp centred on (x, y)."""
-    w = text_width(text, size, 0.52) + 28
-    h = size + (16 if sub else 12)
-    if sub:
-        w = max(w, text_width(sub, 9) + 28)
-    left, top = -w / 2, -h / 2
-    inner = [
-        f'<rect x="{left:.1f}" y="{top:.1f}" width="{w:.1f}" height="{h:.1f}" fill="none" stroke="{color}" stroke-width="2.5"/>',
-        f'<rect x="{left + 4:.1f}" y="{top + 4:.1f}" width="{w - 8:.1f}" height="{h - 8:.1f}" fill="none" stroke="{color}" stroke-width="1"/>',
-        f'<text x="0" y="{(size * 0.36) - (5 if sub else 0):.1f}" class="st" font-size="{size}" '
-        f'fill="{color}" text-anchor="middle">{e(text)}</text>',
-    ]
-    if sub:
-        inner.append(
-            f'<text x="0" y="{h / 2 - 8:.1f}" class="mo" font-size="9" fill="{color}" '
-            f'text-anchor="middle">{e(sub)}</text>'
+# --------------------------------------------------------------------------
+# Plates
+# --------------------------------------------------------------------------
+def cham(x, y, w, h, c) -> str:
+    """Points of a rectangle with all four corners cut."""
+    return " ".join(
+        f"{px:.1f},{py:.1f}"
+        for px, py in (
+            (x + c, y), (x + w - c, y), (x + w, y + c), (x + w, y + h - c),
+            (x + w - c, y + h), (x + c, y + h), (x, y + h - c), (x, y + c),
         )
-    cls = ' class="thud"' if animate else ' opacity=".88"'
-    return (
-        f'<g transform="translate({x} {y}) rotate({rotate})" filter="url(#rough)">'
-        f"<g{cls}>{''.join(inner)}</g></g>"
     )
 
 
-def emblem(cx: float, cy: float, r: float = 17, color=PAPER) -> str:
-    """Invented seal: a hard-edged gear around a watching lens."""
-    import math
+def screw(cx, cy, r=4.5, seed=0) -> str:
+    angle = random.Random(seed).uniform(0, 180)
+    dx, dy = r * 0.7 * math.cos(math.radians(angle)), r * 0.7 * math.sin(math.radians(angle))
+    return (
+        f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r}" fill="{COPPER_LO}" stroke="{COPPER_DK}" stroke-width="1.5"/>'
+        f'<circle cx="{cx - .8:.1f}" cy="{cy - .8:.1f}" r="{r - 1.6:.1f}" fill="none" stroke="{COPPER_HI}" stroke-width=".8" opacity=".6"/>'
+        f'<path d="M{cx - dx:.1f} {cy - dy:.1f}L{cx + dx:.1f} {cy + dy:.1f}" stroke="{COPPER_DK}" stroke-width="1.6"/>'
+    )
 
-    teeth, pts = 12, []
+
+_ids = iter(range(1, 10_000))
+
+
+def plate(x, y, w, h, *, c=16, rim=9, fill=OXBLOOD, metal=COPPER, hi=COPPER_HI,
+          lo=COPPER_LO, screws=True) -> tuple[str, tuple[float, float, float, float], str]:
+    """Bevelled metal frame around a dark panel.
+
+    Returns (svg, inner box (x, y, w, h), clip id of the inner panel).
+    """
+    cid = f"p{next(_ids)}"
+    ix, iy, iw, ih = x + rim, y + rim, w - 2 * rim, h - 2 * rim
+    ic = max(c - rim * 0.6, 4)
+    out = [
+        f'<polygon points="{cham(x + 3, y + 5, w, h, c)}" fill="#000" opacity=".55"/>',  # hard shadow
+        f'<polygon points="{cham(x, y, w, h, c)}" fill="{hi}"/>',                         # highlight
+        f'<polygon points="{cham(x + 2, y + 2, w - 2, h - 2, c)}" fill="{COPPER_DK}"/>',  # shadow side
+        f'<polygon points="{cham(x + 2, y + 2, w - 4, h - 4, c)}" fill="{metal}"/>',      # face
+        f'<polygon points="{cham(x + 2, y + 2, w - 4, h - 4, c)}" fill="{metal}" filter="url(#wear)" opacity=".35"/>',
+        f'<polygon points="{cham(ix - 2, iy - 2, iw + 4, ih + 4, ic + 1)}" fill="{lo}"/>',   # inner lip
+        f'<polygon points="{cham(ix, iy, iw, ih, ic)}" fill="{fill}"/>',
+        f'<clipPath id="{cid}"><polygon points="{cham(ix, iy, iw, ih, ic)}"/></clipPath>',
+        f'<rect x="{ix}" y="{iy}" width="{iw}" height="{ih}" filter="url(#grime)" clip-path="url(#{cid})"/>',
+        f'<polygon points="{cham(ix + 5, iy + 5, iw - 10, ih - 10, max(ic - 4, 3))}" fill="none" stroke="{lo}" stroke-width="1" opacity=".7"/>',
+    ]
+    if screws:
+        for i, (sx, sy) in enumerate(((x + c * .55, y + c * .55), (x + w - c * .55, y + c * .55),
+                                      (x + c * .55, y + h - c * .55), (x + w - c * .55, y + h - c * .55))):
+            out.append(screw(sx, sy, 3.6, seed=int(x + y) + i))
+    return "\n".join(out), (ix, iy, iw, ih), cid
+
+
+def desk(width: int, height: int, seed: int = 1) -> str:
+    """Dark background strewn with old papers. Deliberately low contrast."""
+    rng = random.Random(seed)
+    out = [f'<rect width="{width}" height="{height}" fill="{BG}"/>']
+    for _ in range(7):
+        pw, ph = rng.uniform(140, 260), rng.uniform(170, 300)
+        px, py = rng.uniform(-80, width - 60), rng.uniform(-120, height - 40)
+        rot = rng.uniform(-18, 18)
+        lines = "".join(
+            f'<rect x="{18}" y="{30 + i * 14}" width="{rng.uniform(40, pw - 40):.0f}" height="3" fill="{DESK_LINE}"/>'
+            for i in range(int((ph - 60) / 14))
+            if rng.random() < 0.8
+        )
+        out.append(
+            f'<g transform="translate({px:.0f} {py:.0f}) rotate({rot:.1f})">'
+            f'<rect width="{pw:.0f}" height="{ph:.0f}" fill="{DESK}" stroke="{DESK_LINE}"/>{lines}</g>'
+        )
+    out.append(f'<rect width="{width}" height="{height}" filter="url(#grime)"/>')
+    return "\n".join(out)
+
+
+def emblem(cx: float, cy: float, r: float, color=COPPER_HI, eye=RED_HI) -> str:
+    """Invented seal: a gear around a watching eye."""
+    teeth, pts = 14, []
     for i in range(teeth * 2):
-        radius = r if i % 2 == 0 else r * 0.8
-        for j in (-0.32, 0.32):
-            angle = (i + j) * math.pi / teeth
-            pts.append(f"{cx + radius * math.cos(angle):.1f},{cy + radius * math.sin(angle):.1f}")
+        radius = r if i % 2 == 0 else r * 0.84
+        for j in (-0.3, 0.3):
+            a = (i + j) * math.pi / teeth
+            pts.append(f"{cx + radius * math.cos(a):.1f},{cy + radius * math.sin(a):.1f}")
     lens = " ".join(
-        f"{cx + dx:.1f},{cy + dy:.1f}"
-        for dx, dy in ((-r * .55, 0), (-r * .22, -r * .28), (r * .22, -r * .28), (r * .55, 0), (r * .22, r * .28), (-r * .22, r * .28))
+        f"{cx + dx * r:.1f},{cy + dy * r:.1f}"
+        for dx, dy in ((-.6, 0), (-.25, -.3), (.25, -.3), (.6, 0), (.25, .3), (-.25, .3))
     )
-    p = r * 0.13
+    p = r * 0.14
     return (
-        f'<g fill="none" stroke="{color}" stroke-width="1">'
-        f'<polygon points="{" ".join(pts)}"/>'
-        f'<rect x="{cx - r * .62:.1f}" y="{cy - r * .62:.1f}" width="{r * 1.24:.1f}" height="{r * 1.24:.1f}" transform="rotate(45 {cx} {cy})" stroke="{LINE}"/>'
-        f'<polygon points="{lens}"/>'
-        f'<rect x="{cx - p:.1f}" y="{cy - p:.1f}" width="{2 * p:.1f}" height="{2 * p:.1f}" fill="{BLOOD}" stroke="none" transform="rotate(45 {cx} {cy})"/>'
+        f'<g stroke="{OUTLINE}" stroke-width="2">'
+        f'<polygon points="{" ".join(pts)}" fill="{COPPER}"/>'
+        f'<circle cx="{cx}" cy="{cy}" r="{r * .72:.1f}" fill="{COPPER_DK}"/>'
+        f'<circle cx="{cx}" cy="{cy}" r="{r * .72:.1f}" fill="none" stroke="{color}" stroke-width="1.2"/>'
+        f'<polygon points="{lens}" fill="{OXBLOOD_2}" stroke="{color}" stroke-width="1.5"/>'
+        f'<g class="blink" style="transform-origin:{cx}px {cy}px">'
+        f'<rect x="{cx - p:.1f}" y="{cy - p:.1f}" width="{2 * p:.1f}" height="{2 * p:.1f}" fill="{eye}" '
+        f'stroke="none" transform="rotate(45 {cx} {cy})"/></g>'
         "</g>"
     )
-
-
-# --------------------------------------------------------------------------
-# Industrial skyline
-# --------------------------------------------------------------------------
-def skyline(seed: int, x0: float, x1: float, base: float, max_h: float,
-            fill: str, lights: bool = False) -> tuple[str, list[tuple[float, float]]]:
-    """Procedural silhouette of stacks, blocks, tanks and gantries.
-
-    Returns the SVG and the (x, y) tops of smokestacks so smoke can be added.
-    """
-    rng = random.Random(seed)
-    shapes: list[str] = []
-    windows: list[str] = []
-    stacks: list[tuple[float, float]] = []
-    x = x0 - rng.uniform(0, 20)
-    while x < x1:
-        kind = rng.choices(("block", "stack", "tank", "gantry"), (5, 2, 1.3, 1))[0]
-        if kind == "block":
-            w = rng.uniform(26, 74)
-            h = rng.uniform(max_h * 0.25, max_h * 0.72)
-            top = base - h
-            d = f"M{x:.0f} {base}V{top:.0f}H{x + w:.0f}V{base}Z"
-            if rng.random() < 0.5:  # stepped roof
-                sw = w * rng.uniform(0.3, 0.6)
-                sx = x + rng.uniform(0, w - sw)
-                sh = rng.uniform(6, 18)
-                d += f"M{sx:.0f} {top:.0f}V{top - sh:.0f}H{sx + sw:.0f}V{top:.0f}Z"
-            shapes.append(f'<path d="{d}"/>')
-            if rng.random() < 0.4:  # antenna
-                ax = x + rng.uniform(4, w - 4)
-                shapes.append(f'<path d="M{ax:.0f} {top:.0f}V{top - rng.uniform(10, 26):.0f}" stroke="{fill}" stroke-width="1.5"/>')
-            if lights:
-                for _ in range(rng.randint(0, 4)):
-                    wx = x + 4 + rng.uniform(0, max(w - 10, 1))
-                    wy = top + 6 + rng.uniform(0, max(h - 20, 1))
-                    cls = ' class="win"' if rng.random() < 0.25 else ' opacity=".7"'
-                    windows.append(
-                        f'<rect{cls} x="{wx:.0f}" y="{wy:.0f}" width="3" height="4" fill="{BRASS}" '
-                        f'style="animation-delay:-{rng.uniform(0, 7):.1f}s"/>'
-                    )
-            x += w + rng.choice((0, 0, 2, 6))
-        elif kind == "stack":
-            w = rng.uniform(7, 12)
-            h = rng.uniform(max_h * 0.7, max_h)
-            top = base - h
-            shapes.append(
-                f'<path d="M{x:.0f} {base}V{top:.0f}H{x + w:.0f}V{base}Z'
-                f'M{x - 2:.0f} {top:.0f}V{top - 5:.0f}H{x + w + 2:.0f}V{top:.0f}Z"/>'
-            )
-            for band in range(int(top) + 14, int(base) - 6, 16):
-                shapes.append(f'<rect x="{x - 1:.0f}" y="{band}" width="{w + 2:.0f}" height="2"/>')
-            stacks.append((x + w / 2, top - 5))
-            x += w + rng.uniform(6, 18)
-        elif kind == "tank":
-            w = rng.uniform(34, 56)
-            h = rng.uniform(24, 46)
-            top = base - h
-            c = w * 0.22
-            shapes.append(
-                f'<path d="M{x:.0f} {base}V{top:.0f}L{x + c:.0f} {top - c * .6:.0f}'
-                f'H{x + w - c:.0f}L{x + w:.0f} {top:.0f}V{base}Z"/>'
-            )
-            x += w + rng.uniform(2, 8)
-        else:  # gantry / crane lattice
-            w = rng.uniform(30, 48)
-            h = rng.uniform(max_h * 0.45, max_h * 0.8)
-            top = base - h
-            lines = [f"M{x:.0f} {base}V{top:.0f}M{x + w:.0f} {base}V{top:.0f}M{x:.0f} {top:.0f}H{x + w + 26:.0f}"]
-            step = 14
-            y = base
-            while y - step > top:
-                lines.append(f"M{x:.0f} {y:.0f}L{x + w:.0f} {y - step:.0f}M{x:.0f} {y - step:.0f}H{x + w:.0f}")
-                y -= step
-            lines.append(f"M{x + w + 22:.0f} {top:.0f}V{top + rng.uniform(18, 40):.0f}")
-            shapes.append(f'<path d="{"".join(lines)}" fill="none" stroke="{fill}" stroke-width="1.5"/>')
-            x += w + rng.uniform(4, 14)
-    body = f'<g fill="{fill}" class="cr">{"".join(shapes)}</g>' + "".join(windows)
-    return body, stacks
-
-
-def smoke(stacks: list[tuple[float, float]], color: str = "#3b332d", seed: int = 1) -> str:
-    """Hard-edged stepped plumes drifting up from each stack."""
-    rng = random.Random(seed)
-    out = []
-    for sx, sy in stacks:
-        for i in range(3):
-            s = rng.uniform(6, 11)
-            pts = " ".join(
-                f"{sx + dx * s:.1f},{sy + dy * s:.1f}"
-                for dx, dy in ((-1, 0), (-0.6, -0.9), (0.4, -1.1), (1.1, -0.4), (0.8, 0.5), (-0.3, 0.7))
-            )
-            out.append(
-                f'<polygon class="smoke" points="{pts}" fill="{color}" '
-                f'style="animation-delay:-{i * 3.3 + rng.uniform(0, 1.5):.1f}s"/>'
-            )
-    return "".join(out)
-
-
-def smog(x: float, y: float, width: float, height: float, bands: int = 6) -> str:
-    """Stepped haze: stacked flat bands, no gradients."""
-    step = height / bands
-    return "".join(
-        f'<rect class="cr" x="{x}" y="{y + i * step:.1f}" width="{width}" height="{height - i * step:.1f}" '
-        f'fill="#3a302a" opacity=".07"/>'
-        for i in range(bands)
-    )
-
-
-def desaturate(hex_color: str, amount: float = 0.55, darken: float = 0.82) -> str:
-    """Push a language colour toward the grim palette."""
-    try:
-        h = hex_color.lstrip("#")
-        r, g, b = (int(h[i : i + 2], 16) for i in (0, 2, 4))
-    except (ValueError, AttributeError):
-        return FADED
-    grey = 0.3 * r + 0.59 * g + 0.11 * b
-    mix = [((1 - amount) * c + amount * grey) * darken for c in (r, g, b)]
-    return "#" + "".join(f"{max(0, min(255, int(c))):02x}" for c in mix)

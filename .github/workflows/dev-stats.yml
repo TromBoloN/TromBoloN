@@ -8,6 +8,7 @@ on:
     paths:
       - scripts/generate_stats_card.py
       - scripts/dossier_style.py
+      - scripts/fonts/**
       - .github/workflows/dev-stats.yml
 
 permissions:
@@ -24,17 +25,17 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Generate stats card
+      - name: Generate activity panel
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_USERNAME: ${{ github.repository_owner }}
-        run: python scripts/generate_stats_card.py --output assets/dev-stats.svg
+        run: python scripts/generate_stats_card.py --output assets/activity.svg
 
       - name: Commit & push if changed
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add assets/dev-stats.svg assets/attendance-register.svg
+          git add assets/activity.svg
           if git diff --cached --quiet; then
             echo "No changes"
           else
